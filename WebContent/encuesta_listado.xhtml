@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<meta charset="utf-8" />
+	<title>Encuesta</title>
+	<link
+		href='https://fonts.googleapis.com/css?family=Roboto:400,300,500|Ubuntu+Condensed'
+		rel='stylesheet' type='text/css' />
+</h:head>
+<h:body>
+<h:form>
+
+<p:panelGrid  columns="3">
+<p:outputLabel value="UserID"></p:outputLabel>
+<p:inputText value="#{encuestaMB.encuestaBean.userID}"></p:inputText>
+<p:commandButton value="Listar"
+                 action="#{encuestaMB.listar()}"
+                 ajax="true"
+                 update="tblEncuestas"></p:commandButton>
+</p:panelGrid>
+	<p:dataTable 	
+	                id="tblEncuestas"
+	                var="encuestaBean" 
+					value="#{encuestaMB.lstEncuestaBeans}"
+					rows="10"
+                 	paginator="true"
+                 	paginatorTemplate="{CurrentPageReport}
+                 	 {FirstPageLink} 
+                 	 {PreviousPageLink} 
+                 	 {PageLinks} {NextPageLink} 
+                 	 {LastPageLink}
+                 	 {RowsPerPageDropdown}"
+                 	rowsPerPageTemplate="10,10,15,30"
+                 	 scrollable="true"
+                     scrollWidth="95%" scrollHeight="90%"
+                 	 style="font-size:12px;">
+	
+		<p:column headerText="UserID" style="width:30px; text-align:left">
+			<h:outputText value="#{encuestaBean.userID}" />
+		</p:column>
+
+		<p:column headerText="NumLog" style="width:30px; text-align:left">
+			<h:outputText value="#{encuestaBean.numLog}" />
+		</p:column>
+
+		<p:column headerText="CodTrx" style="width:19px; text-align:left">
+			<h:outputText value="#{encuestaBean.codTrx}" />
+		</p:column>
+
+		<p:column headerText="BranchID" style="width:30px; text-align:left">
+			<h:outputText value="#{encuestaBean.branchID}" />
+		</p:column>
+		
+		<p:column headerText="DateTimeBegin" style="width:55px; text-align:left">
+			<h:outputText value="#{encuestaBean.dateTimeBegin}" />
+		</p:column>
+		
+			<p:column headerText="DateTimeEnd" style="width:55px; text-align:left">
+			<h:outputText value="#{encuestaBean.dateTimeEnd}" />
+		</p:column>
+		
+			<p:column headerText="TimeMinutes" style="width:50px; text-align:left">
+			<h:outputText value="#{encuestaBean.timeMinutes}" />
+		</p:column>
+		
+			<p:column headerText="DateTimeDiff" style="width:50px; text-align:left">
+			<h:outputText value="#{encuestaBean.dateTimeDiff}" />
+		</p:column>
+		
+		<p:column headerText="WorkstationID" style="width:65px; text-align:left">
+			<h:outputText value="#{encuestaBean.workstationID}" />
+		</p:column>
+		
+					<p:column headerText="NomCliAll" style="width:200px; text-align:left">
+			<h:outputText value="#{encuestaBean.nomCliAll}" />
+		</p:column>
+		
+		<p:column headerText="NumTarjeta" style="width:100px; text-align:left">
+			<h:outputText value="#{encuestaBean.numTarjeta}" />
+		</p:column>
+		
+		<p:column headerText="NumRespuesta" style="width:70px; text-align:left">
+			<h:outputText value="#{encuestaBean.numRespuesta}" />
+		</p:column>
+		
+		<p:column headerText="CodUnico" style="width:50px; text-align:left">
+			<h:outputText value="#{encuestaBean.codUnico}" />
+		</p:column>
+		
+		<p:column headerText="TipDoc" style="width:30px; text-align:left">
+			<h:outputText value="#{encuestaBean.tipDoc}" />
+		</p:column>
+		
+		<p:column headerText="NumDoc" style="width:50px; text-align:left">
+			<h:outputText value="#{encuestaBean.numDoc}" />
+		</p:column>
+		
+		<p:column headerText="TipoCliente" style="width:30px; text-align:left">
+			<h:outputText value="#{encuestaBean.tipoCliente}" />
+		</p:column>
+		
+		<p:column headerText="DescTipoCliente" style="width:60px; text-align:left">
+			<h:outputText value="#{encuestaBean.descTipoCliente}" />
+		</p:column>
+		
+		<p:column headerText="ApePatCliente" style="width:60px; text-align:left">
+			<h:outputText value="#{encuestaBean.apePatCliente}" />
+		</p:column>
+		
+		<p:column headerText="ApeMatCliente" style="width:60px; text-align:left">
+			<h:outputText value="#{encuestaBean.apeMatCliente}" />
+		</p:column>
+		
+		<p:column headerText="NomCliente" style="width:50px; text-align:left">
+			<h:outputText value="#{encuestaBean.nomCliente}" />
+		</p:column>
+		
+		<f:facet name="paginatorTopLeft">
+            <p:commandButton type="button" icon="pi pi-refresh" />
+        </f:facet>
+ 
+        <f:facet name="paginatorBottomRight">
+            <p:commandButton type="button" icon="pi pi-cloud-upload" />
+        </f:facet>
+	</p:dataTable>
+	</h:form>
+</h:body>
+</html>
